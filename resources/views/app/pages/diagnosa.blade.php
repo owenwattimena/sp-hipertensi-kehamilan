@@ -172,7 +172,7 @@
         <div class="card-body gejala">
             
             <p class="text-center">
-                Jadi Penyakit dengan CF terbesar adalah <i class="h5">{{session('nilai_akhir')['penyakit']}} </i> dengan nilai sebesar <u class="h5">{{ round(session('nilai_akhir')['CF'], 3)}} </u>
+                Jadi Penyakit dengan CF terbesar adalah <i class="h5">{{session('nilai_akhir')['penyakit']}} </i> dengan nilai sebesar <u class="h5">{{ round(session('nilai_akhir')['persentase'], 3) }} %</u> 
             </p>
             
         </div>

@@ -108,6 +108,7 @@ class DiagnosaController extends Controller
             $data['nilai_akhir'] = [
                 'penyakit' => $penyakit,
                 'CF' => $cf_max,
+                'persentase' => $cf_max * 100
             ];
             // dd($data);
 
