@@ -189,8 +189,10 @@
 @endphp
 
 @section('script')
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
     <script>
-        let radio = document.querySelectorAll('.')
+        // let radio = document.querySelectorAll('.')
         $('.form-check-input').click(function(){
             if (this.getAttribute('checked')) { // check the presence of checked attr
                 $(this).removeAttr('checked'); // if present remove that

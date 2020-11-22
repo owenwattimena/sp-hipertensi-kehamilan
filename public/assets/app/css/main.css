@@ -1,3 +1,30 @@
+@font-face {
+    font-family: 'playball';
+    src: url(../fonts/Playball-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'indieflower';
+    src: url(../fonts/IndieFlower-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'fondamento';
+    src: url(../fonts/Fondamento-Regular.ttf);
+}
+
+.playball {
+    font-family: 'playball'!important;
+}
+
+.indieflower {
+    font-family: 'indieflower'!important;
+}
+
+.fondamento {
+    font-family: 'fondamento'!important;
+}
+
 html {
     overflow: auto;
 }
@@ -10,12 +37,20 @@ body {
     background-color: #E65079;
 }
 
-.bg-dark-purple {
-    background-color: #6850E6!important;
+.bg-blue-dark {
+    background-color: #053A77;
 }
 
-.active {
-    background-color: #3E80CB!important;
+.bg-blue {
+    background-color: #0F6FC6!important;
+}
+
+.nav-item .active {
+    color: #3E80CB!important;
+}
+
+.list-group-item {
+    line-height: 40px;
 }
 
 .question label {
@@ -26,7 +61,25 @@ body {
     text-align: left;
     padding-top: 6rem;
     padding-bottom: 6rem;
-    text-shadow: 2px 2px 10px #666666;
+    /* text-shadow: 2px 2px 10px #666666; */
+}
+
+.shadow-bottom {
+    box-shadow: 0px 2px 8px 1px #aaa;
+    /* box-shadow: 0 10px 2px -2px gray; */
+}
+
+.card-info-title {
+    font-size: 12pt!important;
+}
+
+.card-info-body {
+    font-size: 10pt!important;
+    text-align: justify!important;
+}
+
+.bg-card-teal {
+    background-color: #87e5da!important;
 }
 
 .overlay {

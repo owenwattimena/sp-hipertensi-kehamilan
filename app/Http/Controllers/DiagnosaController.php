@@ -16,7 +16,7 @@ class DiagnosaController extends Controller
     }
 
     public function diagnosa(Request $request){
-        
+        // dd($request);
         $data = [];
         $gejala_pasien = $request->except('_token', '_method');
         if($gejala_pasien){

@@ -24,11 +24,16 @@ class PenyakitController extends Controller
     }
 
     public function store(Request $request){
+        // dd($request);
         if ($request) {
             # code...
             $penyakit = new Penyakit;
             $penyakit->kode = $request->kode;
             $penyakit->nama = $request->nama;
+            $penyakit->definisi = $request->definisi;
+            $penyakit->gejala = $request->gejala;
+            $penyakit->pencegahan = $request->pencegahan;
+            $penyakit->pengobatan = $request->pengobatan;
             if ($penyakit->save()) {
                 # code...
                 $alert = [
@@ -45,11 +50,22 @@ class PenyakitController extends Controller
         }
     }
 
-    public function update(Request $request, $id){
+    public function edit($kode){
+
+        $data['penyakit'] = Penyakit::where('kode', $kode)->get()->first();
+        return view('admin.pages.penyakit.edit', $data);
+    }
+
+    public function update(Request $request, $kode){
         if ($request) {
             # code...
-            $penyakit = Penyakit::findOrFail($id);
+            $penyakit = Penyakit::where('kode',$kode)->get()->first();
+            $penyakit->kode = $request->kode;
             $penyakit->nama = $request->nama;
+            $penyakit->definisi = $request->definisi;
+            $penyakit->gejala = $request->gejala;
+            $penyakit->pencegahan = $request->pencegahan;
+            $penyakit->pengobatan = $request->pengobatan;
             if ($penyakit->save()) {
                 # code...
                 $alert = [

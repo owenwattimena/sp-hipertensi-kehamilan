@@ -17,6 +17,10 @@ class CreatePenyakitsTable extends Migration
             $table->id();
             $table->string('kode', 4)->unique();;
             $table->string('nama');
+            $table->longText('definisi');
+            $table->longText('gejala');
+            $table->longText('pencegahan');
+            $table->longText('pengobatan');
         });
     }
 

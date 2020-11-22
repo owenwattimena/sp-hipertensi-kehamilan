@@ -4,6 +4,9 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="{{asset('assets/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" integrity="sha512-pDpLmYKym2pnF0DNYDKxRnOk1wkM9fISpSOjt8kWFKQeDmBTjSnBZhTd41tXwh8+bRMoSaFsRnznZUiH9i3pxA==" crossorigin="anonymous" />
+
 @endsection
 
 @section('page', 'Penyakit')
@@ -45,7 +48,7 @@
                             <td>{{$data->kode}}</td>
                             <td>{{$data->nama}}</td>
                             <td>
-                              <button data-id="{{$data->id}}" class="btn btn-warning btn-edit rounded-0 btn-sm text-danger" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> EDIT</button>
+                              <a href="{{route('edit_penyakit', $data->kode)}}" class="btn btn-warning rounded-0 btn-sm text-danger" > <i class="fas fa-edit"></i> EDIT</a>
                               <form class="d-inline" method="post" action="{{route('penyakit_delete', ['id' => $data->id])}}">
                                 @csrf
                                 @method('delete')
@@ -66,7 +69,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -92,6 +95,34 @@
                       Tidak boleh kosong.
                     </div>
                 </div>
+                <div class="col-md-12 mb-3">
+                  <label for="definisi">Definisi</label>
+                  <textarea class="form-control textarea" id="definisi" name="definisi" rows="3" required></textarea>
+                  <div class="invalid-feedback">
+                      Tidak boleh kosong.
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label for="gejala">Gejala</label>
+                  <textarea class="form-control textarea" id="gejala" name="gejala" rows="3" required></textarea>
+                  <div class="invalid-feedback">
+                      Tidak boleh kosong.
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label for="pencegahan">Pencegahan</label>
+                  <textarea class="form-control textarea" id="pencegahan" name="pencegahan" rows="3" required></textarea>
+                  <div class="invalid-feedback">
+                      Tidak boleh kosong.
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label for="pengobatan">Pengobatan</label>
+                  <textarea class="form-control textarea" id="pengobatan" name="pengobatan" rows="3" required></textarea>
+                  <div class="invalid-feedback">
+                      Tidak boleh kosong.
+                  </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -108,6 +139,7 @@
 <!-- DataTables -->
 <script src="{{asset('assets/admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js" integrity="sha512-+cXPhsJzyjNGFm5zE+KPEX4Vr/1AbqCUuzAS8Cy5AfLEWm9+UI9OySleqLiSQOQ5Oa2UrzaeAOijhvV/M4apyQ==" crossorigin="anonymous"></script>
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
@@ -131,7 +163,7 @@
 $('#table').DataTable();
 
 $('.btn-create').click(function(){
-  $('.modal-title').text('Tambah Gejala');
+  $('.modal-title').text('Tambah Penyakit');
   $('#form').attr('action', `{{route('penyakit_store')}}`);
   $('#method').val('post');
   $('#kode').val(`{{$kode_baru}}`);
@@ -147,7 +179,12 @@ $('.btn-edit').click(function(){
   let kode = parent[1].textContent;
   $('#kode').val(kode);
   $('#nama').val(parent[2].textContent);
+  // $('#definisi').html(parent[3].textContent);
 });
 
+$(function () {
+        // Summernote
+        $('.textarea').summernote()
+    })
 </script>
 @endsection

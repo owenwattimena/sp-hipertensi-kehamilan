@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/diagnosa', 'DiagnosaController@index')->name('diagnosa');
 Route::post('/diagnosa', 'DiagnosaController@diagnosa')->name('diagnosa');
+Route::get('/info-penyakit', 'HomeController@info_penyakit')->name('informasi');
 
 /**
  * ------------------------------------------------------------------------
@@ -51,8 +52,9 @@ Route::group(['middleware' => ['auth']], function () {
         
         Route::group(['prefix' => 'penyakit'], function () { 
             Route::get('/', 'Admin\PenyakitController@index')->name('penyakit');
+            Route::get('/{kode}/edit', 'Admin\PenyakitController@edit')->name('edit_penyakit');
             Route::post('/', 'Admin\PenyakitController@store')->name('penyakit_store');
-            Route::put('/update/{id}', 'Admin\PenyakitController@update');
+            Route::put('/update/{kode}', 'Admin\PenyakitController@update')->name('update_penyakit');
             Route::delete('/delete/{id}', 'Admin\PenyakitController@delete')->name('penyakit_delete');
         });
         
