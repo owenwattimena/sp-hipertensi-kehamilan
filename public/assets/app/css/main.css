@@ -33,6 +33,11 @@ body {
     overflow: hidden;
 }
 
+.bg-purple {
+    background-color: #403563;
+    color: whitesmoke;
+}
+
 .bg-pink {
     background-color: #E65079;
 }

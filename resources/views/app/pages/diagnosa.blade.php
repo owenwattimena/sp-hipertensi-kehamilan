@@ -15,35 +15,44 @@
     </div>
     @endif
     <div class="card mb-3">
-        <div class="card-header">
+        <div class="card-header bg-purple">
+            <h5>
             Gejala apa yang anda alami?
+            </h5>
+            <small>Abaikan pertanyaan bila anda meresa tidak mengalami gejala tersebut.</small>
         </div>
         <div class="card-body question">
             <form method="post" action="{{route('diagnosa')}}">
                 @csrf
                 @method('post')
-                <ul>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             @foreach ($gejala as $data)
-                            <div class="mb-3">
+                            <div class=" card mb-3 shadow-sm">
+                                <div class="card-body">
 
-                                <li>{{$data->nama}}</li>
+
+                                <p>{{$data->nama}}</p>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="{{$data->kode}}" id="tidak{{$data->kode}}" value="0.2">
+                                    <label class="form-check-label" for="tidak{{$data->kode}}">Tidak Tahu</label>
+                                </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="{{$data->kode}}" id="mungkin{{$data->kode}}" value="0.4">
                                     <label class="form-check-label" for="mungkin{{$data->kode}}">Mungkin</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="{{$data->kode}}" id="kemungkinan{{$data->kode}}" value="0.6">
-                                    <label class="form-check-label" for="kemungkinan{{$data->kode}}">Kemungkinan besar</label>
+                                    <input class="form-check-input" type="radio" name="{{$data->kode}}" id="kemungkinanbesar{{$data->kode}}" value="0.6">
+                                    <label class="form-check-label" for="kemungkinanbesar{{$data->kode}}">Kemungkinan Besar</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="{{$data->kode}}" id="hampir{{$data->kode}}" value="0.8">
-                                    <label class="form-check-label" for="hampir{{$data->kode}}">Hampir pasti</label>
+                                    <label class="form-check-label" for="hampir{{$data->kode}}">Hampir Pasti</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="{{$data->kode}}" id="pasti{{$data->kode}}" value="1">
                                     <label class="form-check-label" for="pasti{{$data->kode}}">Pasti</label>
+                                </div>
                                 </div>
                             </div>
                             
@@ -70,7 +79,6 @@
                             </div>
                         </div> --}}
                     </div>
-                </ul>
 
                 <button class="btn rounded-0 bg-blue-dark text-white">Jalankan Diagnosa</button>
             </form>
