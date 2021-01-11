@@ -49,6 +49,13 @@ class DiagnosaController extends Controller
                     }
                 }
             }
+            if(!isset($data['rules'])){
+                $alert = [
+                    "type" => "alert-danger",
+                    "msg"  => "Opss, seprtinya penyakit dan gejala belum terhubung!"
+                ];  
+                return redirect()->route('diagnosa')->with($alert);
+            }
             // dd($data['rules']);
             // cf
             foreach ($data['rules'] as $rule_key => $rule_value) {

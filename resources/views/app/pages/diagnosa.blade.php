@@ -26,24 +26,27 @@
                     <div class="row">
                         <div class="col-md-6">
                             @foreach ($gejala as $data)
-                                
-                            <li>{{$data->nama}}</li>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="{{$data->kode}}" id="mungkin{{$data->kode}}" value="0.4">
-                                <label class="form-check-label" for="mungkin{{$data->kode}}">Mungkin</label>
+                            <div class="mb-3">
+
+                                <li>{{$data->nama}}</li>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="{{$data->kode}}" id="mungkin{{$data->kode}}" value="0.4">
+                                    <label class="form-check-label" for="mungkin{{$data->kode}}">Mungkin</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="{{$data->kode}}" id="kemungkinan{{$data->kode}}" value="0.6">
+                                    <label class="form-check-label" for="kemungkinan{{$data->kode}}">Kemungkinan besar</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="{{$data->kode}}" id="hampir{{$data->kode}}" value="0.8">
+                                    <label class="form-check-label" for="hampir{{$data->kode}}">Hampir pasti</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="{{$data->kode}}" id="pasti{{$data->kode}}" value="1">
+                                    <label class="form-check-label" for="pasti{{$data->kode}}">Pasti</label>
+                                </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="{{$data->kode}}" id="kemungkinan{{$data->kode}}" value="0.6">
-                                <label class="form-check-label" for="kemungkinan{{$data->kode}}">Kemungkinan besar</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="{{$data->kode}}" id="hampir{{$data->kode}}" value="0.8">
-                                <label class="form-check-label" for="hampir{{$data->kode}}">Hampir pasti</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="{{$data->kode}}" id="pasti{{$data->kode}}" value="1">
-                                <label class="form-check-label" for="pasti{{$data->kode}}">Pasti</label>
-                            </div>
+                            
                             @endforeach
 
                         </div>
@@ -69,7 +72,7 @@
                     </div>
                 </ul>
 
-                <button class="btn rounded-0 bg-dark-purple text-white">Jalankan Diagnosa</button>
+                <button class="btn rounded-0 bg-blue-dark text-white">Jalankan Diagnosa</button>
             </form>
         </div>
     </div>
