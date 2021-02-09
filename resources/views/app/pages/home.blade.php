@@ -11,7 +11,7 @@
                 <h1 class="display-5 text-dark text-center text-md-left playball" style="text-shadow: none">Sistem Pakar Hipertensi Kehamilan</h1>
                 <p class="lead text-center text-md-left indieflower text-muted" style="text-shadow: none">Hai Bunda, ayo periksa kesehatan<br>darah tinggi bunda</p>
                 <div class="text-center text-md-left">
-                    <a href="{!!route('diagnosa')!!}" class="btn btn-primary bg-blue-dark">KONSULTAS</a>
+                    <a href="{!!route('diagnosa')!!}" class="btn btn-primary bg-blue-dark">KONSULTASI</a>
                 </div>
             </div>
         </div>
