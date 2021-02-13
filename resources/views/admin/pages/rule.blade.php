@@ -161,11 +161,9 @@
     select2_gejala.val(rule.kode_gejala).trigger('change');
     $('#bobot').val(rule.bobot_pakar);
     $('.modal-title').text('Edit Rule');
-    // $(document).ready(function () {
-    //   $('#method').val('put');
-    //   $('#form').attr('action', `{{ url('admin/rule/update') }}` + '/' + rule.id);
-    // }  
-    // editForm('put', rule.id);
+    $('#method').val('put');
+    $('#form').attr('action', `{{url('admin/rule/update')}}/${rule.id}`);
+    
 
   }
 // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -206,16 +204,11 @@ $(document).ready(function () {
 
   
 
-  $('.btn-edit').click(function(){
-    $('#method').val('put');
-    let id=$(this).data('id');
-    console.log(id);
+  // $('.btn-edit').click(function(){
+  //   $('#method').val('put');
+  //   let id=$(this).data('id');
+  //   console.log(id);
 
-    $('#form').attr('action', `{{url('admin/rule/update')}}/${id}`);
-  });
-  // function editForm(method, id){
-  //   $('#method').val(method);
-  //   // id=$(this).data('id');
   //   $('#form').attr('action', `{{url('admin/rule/update')}}/${id}`);
   // });
 });
