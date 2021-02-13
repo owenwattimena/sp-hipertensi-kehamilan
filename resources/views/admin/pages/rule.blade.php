@@ -33,7 +33,7 @@
                 <button class="btn btn-primary btn-create rounded-0" data-toggle="modal" data-target="#exampleModal">TAMBAH</button>
             </div>
             
-            <table id="table" class="table table-hover">
+            <table id="tabl" class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
