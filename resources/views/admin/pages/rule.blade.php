@@ -61,6 +61,9 @@
                                 <button type="submit" onclick="return confirm('Yakin inging menghapus data?')" class="btn btn-danger rounded-0 btn-sm"> <i class="fas fa-trash"></i> HAPUS</button>
 
                               </form>
+
+
+
                             </td>
                         </tr>
                     @endforeach
@@ -72,65 +75,64 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form id="form" action="{{route('rule_store')}}" method="post" class="needs-validation" novalidate>
-          @csrf
-          <input type="hidden" id="method" name="_method" value="post">
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-12 mb-3">
-                <div class="form-group">
-                  <label for="penyakit">Penyakit</label>
-                  <select class="select form-control" id="penyakit" name="penyakit" required style="font-size: ">
-                    <option value="">Pilih Penyakit</option>
-                    @foreach ($penyakit as $data)
-                      <option id="{{$data->kode}}" value="{{$data->kode}}">{{$data->nama}}</option>
-                    @endforeach
-                  </select>
-                  <small class="invalid-feedback">
-                    Tidak boleh kosong.
-                  </small>
-                </div>
-              </div>
-
-              <div class="col-12 mb-3">
-                <div class="form-group">
-                  <label for="gejala">Gejala</label>
-                  <select class="select form-control form-control-lg" id="gejala" name="gejala" required>
-                    <option value="">Pilih Penyakit</option>
-                    @foreach ($gejala as $data)
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="form" action="{{route('rule_store')}}" method="post" class="needs-validation" novalidate>
+        @csrf
+        <input type="hidden" id="method" name="_method" value="post">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12 mb-3">
+              <div class="form-group">
+                <label for="penyakit">Penyakit</label>
+                <select class="select form-control" id="penyakit" name="penyakit" required style="font-size: ">
+                  <option value="">Pilih Penyakit</option>
+                  @foreach ($penyakit as $data)
                     <option id="{{$data->kode}}" value="{{$data->kode}}">{{$data->nama}}</option>
-                    @endforeach
-                  </select>
-                  <div class="invalid-feedback">
-                    Tidak boleh kosong.
-                  </div>
-                </div>
+                  @endforeach
+                </select>
+                <small class="invalid-feedback">
+                  Tidak boleh kosong.
+                </small>
               </div>
-              <div class="col-md-12 mb-3">
-                <label for="bobot">Bobot Pakar</label>
-                <input type="number" step="0.01" min="0.0" max="1.0" class="form-control" id="bobot" name="bobot" placeholder="Bobot Pakar" required>
+            </div>
+            <div class="col-12 mb-3">
+              <div class="form-group">
+                <label for="gejala">Gejala</label>
+                <select class="select form-control form-control-lg" id="gejala" name="gejala" required>
+                  <option value="">Pilih Penyakit</option>
+                  @foreach ($gejala as $data)
+                  <option id="{{$data->kode}}" value="{{$data->kode}}">{{$data->nama}}</option>
+                  @endforeach
+                </select>
                 <div class="invalid-feedback">
                   Tidak boleh kosong.
                 </div>
               </div>
             </div>
+            <div class="col-md-12 mb-3">
+              <label for="bobot">Bobot Pakar</label>
+              <input type="number" step="0.01" min="0.0" max="1.0" class="form-control" id="bobot" name="bobot" placeholder="Bobot Pakar" required>
+              <div class="invalid-feedback">
+                Tidak boleh kosong.
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
     </div>
   </div>
+</div>
   
 @endsection
 
@@ -187,6 +189,7 @@ $(document).ready(function () {
 
   $('.btn-edit').click(function(){
     let id = $(this).data('id');
+    console.log(id);
     $('.modal-title').text('Edit Rule')
     $('#form').attr('action', `{{url('admin/rule/update')}}/${id}`);
     $('#method').val('put');
