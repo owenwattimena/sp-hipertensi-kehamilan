@@ -159,15 +159,14 @@
   function edit(rule){
     select2_penyakit.val(rule.kode_penyakit).trigger('change');
     select2_gejala.val(rule.kode_gejala).trigger('change');
-
-    // console.log(rule.kode_gejala);
-    
-    // $("#penyakit").val(kode_penyakit);
-    // $("#penyakit").trigger('change');
     $('#bobot').val(rule.bobot_pakar);
-    $('.modal-title').text('Edit Rule')
-    $('#form').attr('action', `{{url('admin/rule/update')}}/${id}`);
-    $('#method').val('put');
+    $('.modal-title').text('Edit Rule');
+    // $(document).ready(function () {
+    //   $('#method').val('put');
+    //   $('#form').attr('action', `{{ url('admin/rule/update') }}` + '/' + rule.id);
+    // }  
+    // editForm('put', rule.id);
+
   }
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
@@ -207,18 +206,17 @@ $(document).ready(function () {
 
   
 
-  // $('.btn-edit').click(function(){
-  //   let id = $(this).data('id');
-  //   console.log(id);
-  //   $('.modal-title').text('Edit Rule')
+  $('.btn-edit').click(function(){
+    $('#method').val('put');
+    let id=$(this).data('id');
+    console.log(id);
+
+    $('#form').attr('action', `{{url('admin/rule/update')}}/${id}`);
+  });
+  // function editForm(method, id){
+  //   $('#method').val(method);
+  //   // id=$(this).data('id');
   //   $('#form').attr('action', `{{url('admin/rule/update')}}/${id}`);
-  //   $('#method').val('put');
-  //   let parent = $(this).parent().parent().children();
-  //   let kode_penyakit = parent[1].dataset.kp;
-  //   let kode_gejala = parent[2].dataset.kg;
-  //   select2_penyakit.val(kode_penyakit).trigger('change');
-  //   select2_gejala.val(kode_gejala).trigger('change');
-  //   $('#bobot').val(parent[3].textContent);
   // });
 });
 
