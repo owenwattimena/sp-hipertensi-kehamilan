@@ -47,14 +47,17 @@
                     @php
                         $no = 0;
                     @endphp
-                    @foreach ($rules as $rule)    
+                    @foreach ($rules as $rule)   
+                        {{-- @php
+                            dd($rule->kode_gejala)
+                        @endphp  --}}
                         <tr>
                           <th scope="row">{{++$no}}</th>
                             <td data-kp="{{$rule->kode_penyakit}}">{{$rule->penyakit->nama}}</td>
                             <td  data-kg="{{$rule->kode_gejala}}">{{$rule->gejala->nama}}</td>
                             <td>{{$rule->bobot_pakar}}</td>
                             <td>
-                              <button data-id="{{$rule->id}}" onclick="edit({{$rule->id}}, {{$rule->kode_penyakit}}, {{$rule->kode_gejala}}, {{$rule->bobot_pakar}})" class="btn btn-warning btn-edit rounded-0 btn-sm text-danger" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> EDIT</button>
+                              <button data-id="{{$rule->id}}" onclick="edit({{$rule}})" class="btn btn-warning btn-edit rounded-0 btn-sm text-danger" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> EDIT</button>
                               <form class="d-inline" method="post" action="{{route('rule_delete', ['id' => $rule->id])}}">
                                 @csrf
                                 @method('delete')
@@ -152,10 +155,16 @@
       placeholder: 'Masukan Gejala',
     }
   );
-  function edit(id, kode_penyakit, kode_gejala, bobot_pakar){
-    select2_penyakit.val(kode_penyakit).trigger('change');
-    select2_gejala.val(kode_gejala).trigger('change');
-    $('#bobot').val(bobot_pakar);
+
+  function edit(rule){
+    select2_penyakit.val(rule.kode_penyakit).trigger('change');
+    select2_gejala.val(rule.kode_gejala).trigger('change');
+
+    // console.log(rule.kode_gejala);
+    
+    // $("#penyakit").val(kode_penyakit);
+    // $("#penyakit").trigger('change');
+    $('#bobot').val(rule.bobot_pakar);
     $('.modal-title').text('Edit Rule')
     $('#form').attr('action', `{{url('admin/rule/update')}}/${id}`);
     $('#method').val('put');
