@@ -54,7 +54,7 @@
                             <td  data-kg="{{$rule->kode_gejala}}">{{$rule->gejala->nama}}</td>
                             <td>{{$rule->bobot_pakar}}</td>
                             <td>
-                              <button data-id="{{$rule->id}}" onclick="edit({{$rule->id}}, {{$rule->kode_penyakit}}, {{$rule->kode_gejala}})" class="btn btn-warning btn-edit rounded-0 btn-sm text-danger" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> EDIT</button>
+                              <button data-id="{{$rule->id}}" onclick="edit({{$rule->id}}, {{$rule->kode_penyakit}}, {{$rule->kode_gejala}}, {{$rule->bobot_pakar}})" class="btn btn-warning btn-edit rounded-0 btn-sm text-danger" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> EDIT</button>
                               <form class="d-inline" method="post" action="{{route('rule_delete', ['id' => $rule->id])}}">
                                 @csrf
                                 @method('delete')
@@ -143,6 +143,9 @@
 {{-- Select 2 --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script>
+  function edit(id, kodePenyakit, kodeGejala, bobotPakar){
+    console.log(bobotPakar);
+  }
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
   'use strict';
@@ -187,9 +190,7 @@ $(document).ready(function () {
     $('#bobot').val('');
   });
 
-  function edit(id, kodePenyakit, kodeGejala){
-    console.log(id);
-  }
+  
 
   // $('.btn-edit').click(function(){
   //   let id = $(this).data('id');
