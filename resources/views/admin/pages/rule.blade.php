@@ -33,7 +33,7 @@
                 <button class="btn btn-primary btn-create rounded-0" data-toggle="modal" data-target="#exampleModal">TAMBAH</button>
             </div>
             
-            <table id="tabl" class="table table-hover">
+            <table id="table" class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -152,10 +152,10 @@
       placeholder: 'Masukan Gejala',
     }
   );
-  function edit(id, kodePenyakit, kodeGejala, bobotPakar){
+  function edit(id, kode_penyakit, kode_gejala, bobot_pakar){
     select2_penyakit.val(kode_penyakit).trigger('change');
     select2_gejala.val(kode_gejala).trigger('change');
-    $('#bobot').val(parent[3].textContent);
+    $('#bobot').val(bobot_pakar);
     $('.modal-title').text('Edit Rule')
     $('#form').attr('action', `{{url('admin/rule/update')}}/${id}`);
     $('#method').val('put');
