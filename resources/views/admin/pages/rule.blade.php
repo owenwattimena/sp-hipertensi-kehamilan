@@ -54,7 +54,7 @@
                             <td  data-kg="{{$rule->kode_gejala}}">{{$rule->gejala->nama}}</td>
                             <td>{{$rule->bobot_pakar}}</td>
                             <td>
-                              <button data-id="{{$rule->id}}" class="btn btn-warning btn-edit rounded-0 btn-sm text-danger" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> EDIT</button>
+                              <button data-id="{{$rule->id}}" onclick="edit({{$rule->id}}, {{$rule->kode_penyakit}}, {{$rule->kode_gejala}})" class="btn btn-warning btn-edit rounded-0 btn-sm text-danger" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> EDIT</button>
                               <form class="d-inline" method="post" action="{{route('rule_delete', ['id' => $rule->id])}}">
                                 @csrf
                                 @method('delete')
@@ -187,19 +187,23 @@ $(document).ready(function () {
     $('#bobot').val('');
   });
 
-  $('.btn-edit').click(function(){
-    let id = $(this).data('id');
+  function edit(id, kodePenyakit, kodeGejala){
     console.log(id);
-    $('.modal-title').text('Edit Rule')
-    $('#form').attr('action', `{{url('admin/rule/update')}}/${id}`);
-    $('#method').val('put');
-    let parent = $(this).parent().parent().children();
-    let kode_penyakit = parent[1].dataset.kp;
-    let kode_gejala = parent[2].dataset.kg;
-    select2_penyakit.val(kode_penyakit).trigger('change');
-    select2_gejala.val(kode_gejala).trigger('change');
-    $('#bobot').val(parent[3].textContent);
-  });
+  }
+
+  // $('.btn-edit').click(function(){
+  //   let id = $(this).data('id');
+  //   console.log(id);
+  //   $('.modal-title').text('Edit Rule')
+  //   $('#form').attr('action', `{{url('admin/rule/update')}}/${id}`);
+  //   $('#method').val('put');
+  //   let parent = $(this).parent().parent().children();
+  //   let kode_penyakit = parent[1].dataset.kp;
+  //   let kode_gejala = parent[2].dataset.kg;
+  //   select2_penyakit.val(kode_penyakit).trigger('change');
+  //   select2_gejala.val(kode_gejala).trigger('change');
+  //   $('#bobot').val(parent[3].textContent);
+  // });
 });
 
 </script>
