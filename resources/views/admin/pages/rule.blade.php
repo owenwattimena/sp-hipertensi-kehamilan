@@ -143,8 +143,22 @@
 {{-- Select 2 --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script>
+  let select2_penyakit = $('#penyakit').select2({
+    placeholder: 'Masukkan Penyakit',
+  });
+
+  let select2_gejala = $('#gejala').select2(
+    {
+      placeholder: 'Masukan Gejala',
+    }
+  );
   function edit(id, kodePenyakit, kodeGejala, bobotPakar){
-    console.log(bobotPakar);
+    select2_penyakit.val(kode_penyakit).trigger('change');
+    select2_gejala.val(kode_gejala).trigger('change');
+    $('#bobot').val(parent[3].textContent);
+    $('.modal-title').text('Edit Rule')
+    $('#form').attr('action', `{{url('admin/rule/update')}}/${id}`);
+    $('#method').val('put');
   }
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
@@ -168,15 +182,7 @@
 $(document).ready(function () {  
   $('#table').DataTable();
 
-  let select2_penyakit = $('#penyakit').select2({
-    placeholder: 'Masukkan Penyakit',
-  });
-
-  let select2_gejala = $('#gejala').select2(
-    {
-      placeholder: 'Masukan Gejala',
-    }
-  );
+  
 
   $('.select2-selection').css('height', '40px');
   $('.select2').css('display', 'block');
