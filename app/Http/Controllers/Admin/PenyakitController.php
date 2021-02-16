@@ -9,7 +9,8 @@ class PenyakitController extends Controller
 {
     //
     public function index(){
-        $penyakit = Penyakit::all();
+        // ->orderBy('kode_penyakit', 'asc')->get()->last();
+        $penyakit = Penyakit::orderBy('kode', 'asc')->get();
         $count_penyakit = count($penyakit);
         if ($count_penyakit <= 0) {
             $kode_baru = 'P001';
