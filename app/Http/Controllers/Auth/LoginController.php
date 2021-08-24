@@ -15,7 +15,7 @@ class LoginController extends Controller
     public function login(Request $request){
         
         if(!\Auth::attempt(['username' => $request->username, 'password' => $request->password])){
-            return redirect()->back()->with('msg', '<b>Login gagal</b>.</br>Masukan username dan password yang benar!');
+            return redirect()->back()->with('msg', '<b>Login gagal</b>.</br>Username atau Password yang anda masukan salah!');
         }
         return redirect()->intended('admin');
     }

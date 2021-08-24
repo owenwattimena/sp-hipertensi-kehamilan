@@ -1,6 +1,6 @@
 @extends('app.layouts.app')
 @section('style')
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 @endsection
 @section('main')
     <div class="container py-5">
@@ -77,6 +77,7 @@
     </div>
 @endsection
 @section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         let btn_eye = $('#btn-eye');
         let input_password = $('#password');
@@ -101,5 +102,23 @@
                 $('.validate-math').addClass('visually-hidden')
             }
         });
+        $('form').on('submit', function(e){
+            var username = $('#username').val();
+            var password = $('#password').val();
+            console.log(username)
+            if(username == "" && password == "")
+            {
+                toastr.error('Harap Isi Username dan Password');
+                return;
+            }
+            if(username == ""){
+                toastr.error('Username belum diisi');
+                return;
+            }
+            if(password == ""){
+                toastr.error('Password belum diisi');
+                return;
+            }
+        })
     </script>
 @endsection
